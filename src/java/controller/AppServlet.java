@@ -95,11 +95,15 @@ public class AppServlet extends HttpServlet {
             r.setAttribute("orders", DB.getOrders(null));
             r.getRequestDispatcher("admin_orders.jsp").forward(r, res); return;
         } else if("reg".equals(act)) {
-            if(DB.register(r.getParameter("user"), r.getParameter("email"), r.getParameter("pwd"))) {
+            Boolean regRes = DB.register(r.getParameter("user"), r.getParameter("email"), r.getParameter("pwd"));
+            if(Boolean.TRUE.equals(regRes)) {
                 r.setAttribute("msg", "Registration Successful. Please Login.");
                 r.getRequestDispatcher("login.jsp").forward(r, res); return;
-            } else {
+            } else if(Boolean.FALSE.equals(regRes)) {
                 r.setAttribute("err", "Username taken.");
+                r.getRequestDispatcher("register.jsp").forward(r, res); return;
+            } else {
+                r.setAttribute("err", "Registration failed due to database error. Please try again later.");
                 r.getRequestDispatcher("register.jsp").forward(r, res); return;
             }
         } else if("login".equals(act)) {

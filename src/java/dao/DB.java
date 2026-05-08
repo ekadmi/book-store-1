@@ -6,10 +6,19 @@ import model.*;
 
 public class DB {
     private static SessionFactory sf;
+    private static RuntimeException initError;
     static {
-        try { sf = new Configuration().configure().buildSessionFactory(); } catch(Exception e){ e.printStackTrace(); }
+        try {
+            sf = new Configuration().configure().buildSessionFactory();
+        } catch(Exception e){
+            initError = new RuntimeException("Hibernate SessionFactory initialization failed", e);
+            e.printStackTrace();
+        }
     }
-    public static Session getSession() { return sf.openSession(); }
+    public static Session getSession() {
+        if(sf == null) throw new IllegalStateException("Hibernate SessionFactory is null. Check hibernate.cfg.xml and DB credentials.", initError);
+        return sf.openSession();
+    }
 
     public static List<Book> getBooks(String q) {
         try(Session s = getSession()) {
@@ -51,13 +60,16 @@ public class DB {
                     .setParameter("u", u).setParameter("p", p).uniqueResult();
         } catch(Exception e){ return null; }
     }
-    public static boolean register(String u, String e, String p) {
+    public static Boolean register(String u, String e, String p) {
         try(Session s = getSession()) {
             Transaction tx = s.beginTransaction();
-            if(s.createQuery("FROM User WHERE username=:u", User.class).setParameter("u", u).uniqueResult() != null) return false;
+            if(s.createQuery("FROM User WHERE username=:u", User.class).setParameter("u", u).uniqueResult() != null) return Boolean.FALSE;
             boolean isAdmin = s.createQuery("SELECT count(*) FROM User", Long.class).uniqueResult() == 0;
-            s.save(new User(u, e, p, isAdmin)); tx.commit(); return true;
-        } catch(Exception ex){ return false; }
+            s.save(new User(u, e, p, isAdmin)); tx.commit(); return Boolean.TRUE;
+        } catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
     public static void saveOrder(String u, String items, double total) {
         try(Session s = getSession()) {

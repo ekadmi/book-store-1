@@ -1,5 +1,6 @@
-    <div style="text-align: center; padding: 30px; color: #777; font-size: 14px;">
-        &copy; 2026 Online Bookstore. All rights reserved.
+        </main>
     </div>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
