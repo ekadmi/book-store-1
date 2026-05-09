@@ -9,7 +9,19 @@ public class DB {
     private static RuntimeException initError;
     static {
         try {
-            sf = new Configuration().configure().buildSessionFactory();
+            Configuration cfg = new Configuration().configure();
+            String dbHost = System.getenv("MYSQLHOST");
+            if (dbHost != null) {
+                String dbUser = System.getenv("MYSQLUSER");
+                String dbPass = System.getenv("MYSQLPASSWORD");
+                String dbPort = System.getenv("MYSQLPORT");
+                String dbName = System.getenv("MYSQLDATABASE");
+                String url = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?createDatabaseIfNotExist=true";
+                cfg.setProperty("hibernate.connection.url", url);
+                cfg.setProperty("hibernate.connection.username", dbUser);
+                cfg.setProperty("hibernate.connection.password", dbPass);
+            }
+            sf = cfg.buildSessionFactory();
         } catch(Exception e){
             initError = new RuntimeException("Hibernate SessionFactory initialization failed", e);
             e.printStackTrace();
