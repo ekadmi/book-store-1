@@ -12,8 +12,7 @@
     <div class="card shadow-sm border-0">
         <div class="card-body p-4">
             <h4 class="card-title fw-bold mb-4">Order Confirmations</h4>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle">
+            <table class="table table-hover align-middle">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
@@ -55,7 +54,6 @@
                         </c:forEach>
                     </tbody>
                 </table>
-            </div>
         </div>
     </div>
 </div>

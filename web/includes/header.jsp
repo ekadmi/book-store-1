@@ -21,18 +21,18 @@
             <ul class="nav nav-pills flex-column mb-auto mt-3">
                 <li class="nav-item">
                     <a href="app" class="nav-link">
-                        <i class="fa-solid fa-store me-2 w-20px text-center"></i> Browse Books
+                        <i class="fa-solid fa-store me-2 text-center"></i> Browse Books
                     </a>
                 </li>
                 <li>
                     <a href="app?act=viewCart" class="nav-link">
-                        <i class="fa-solid fa-cart-shopping me-2 w-20px text-center"></i> My Cart
+                        <i class="fa-solid fa-cart-shopping me-2 text-center"></i> My Cart
                     </a>
                 </li>
                 <c:if test="${not empty sessionScope.user}">
                     <li>
                         <a href="app?act=orders" class="nav-link">
-                            <i class="fa-solid fa-clock-rotate-left me-2 w-20px text-center"></i> Order History
+                            <i class="fa-solid fa-clock-rotate-left me-2 text-center"></i> Order History
                         </a>
                     </li>
                 </c:if>
@@ -44,7 +44,7 @@
                 <c:if test="${not empty sessionScope.user && sessionScope.user.admin}">
                     <li>
                         <a href="app?act=admin" class="nav-link text-warning">
-                            <i class="fa-solid fa-shield-halved me-2 w-20px text-center"></i> Admin Panel
+                            <i class="fa-solid fa-shield-halved me-2 text-center"></i> Admin Panel
                         </a>
                     </li>
                 </c:if>
@@ -52,19 +52,19 @@
                     <c:when test="${not empty sessionScope.user}">
                         <li>
                             <a href="app?act=logout" class="nav-link text-danger">
-                                <i class="fa-solid fa-right-from-bracket me-2 w-20px text-center"></i> Logout (${sessionScope.user.username})
+                                <i class="fa-solid fa-right-from-bracket me-2 text-center"></i> Logout (${sessionScope.user.username})
                             </a>
                         </li>
                     </c:when>
                     <c:otherwise>
                         <li>
                             <a href="login.jsp" class="nav-link">
-                                <i class="fa-solid fa-arrow-right-to-bracket me-2 w-20px text-center"></i> Login
+                                <i class="fa-solid fa-arrow-right-to-bracket me-2 text-center"></i> Login
                             </a>
                         </li>
                         <li>
                             <a href="register.jsp" class="nav-link">
-                                <i class="fa-solid fa-user-plus me-2 w-20px text-center"></i> Register
+                                <i class="fa-solid fa-user-plus me-2 text-center"></i> Register
                             </a>
                         </li>
                     </c:otherwise>

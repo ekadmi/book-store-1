@@ -12,7 +12,7 @@
     <div class="row g-4">
         <!-- Add/Edit Form -->
         <div class="col-lg-4">
-            <div class="card shadow-sm sticky-top admin-sticky-offset">
+            <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <h4 class="card-title fw-bold mb-4 text-center">${not empty editBook ? 'Update Book' : 'Add New Book'}</h4>
                     <form action="app" method="post" enctype="multipart/form-data">
@@ -30,11 +30,8 @@
                             <input type="text" name="a" class="form-control" value="${editBook.author}" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-muted fw-semibold">Price</label>
-                            <div class="input-group">
-                                <span class="input-group-text">Rs.</span>
-                                <input type="number" name="p" class="form-control" value="${editBook.price}" step="0.01" min="0" required>
-                            </div>
+                            <label class="form-label text-muted fw-semibold">Price (Rs.)</label>
+                            <input type="number" name="p" class="form-control" value="${editBook.price}" step="0.01" min="0" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-muted fw-semibold">Description</label>
@@ -61,8 +58,7 @@
             <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <h4 class="card-title fw-bold mb-4">Book List</h4>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle">
+                    <table class="table table-hover align-middle">
                             <thead class="table-light">
                                 <tr>
                                     <th>Image</th>
@@ -93,7 +89,6 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
         </div>

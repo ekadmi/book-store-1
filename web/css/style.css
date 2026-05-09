@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    /* Vibrant Orange and Yellow Palette */
-    --bs-primary: #F97316;
-    --bs-primary-rgb: 249, 115, 22;
+    /* Midnight & Emerald Palette (Print-Ready) */
+    --bs-primary: #059669;
+    --bs-primary-rgb: 5, 150, 105;
     --bs-success: #10B981;
     --bs-warning: #EAB308;
     --bs-danger: #EF4444;
-    --bs-body-bg: #FFFBEB;
+    --bs-body-bg: #f8fafc;
     --bs-body-color: #1F2937;
     --bs-body-font-family: 'Inter', sans-serif;
 }
@@ -21,21 +21,15 @@ body {
 
 /* Custom Overrides for Bootstrap to match design system */
 .card {
-    border: none;
+    border: 1px solid #d1d5db;
     border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
 }
 
 .btn {
     border-radius: 6px;
     font-weight: 500;
     padding: 0.5rem 1rem;
-    transition: all 0.2s;
 }
 
 .btn-primary {
@@ -44,21 +38,9 @@ body {
     color: white;
 }
 
-.btn-primary:hover {
-    background-color: #EA580C;
-    border-color: #EA580C;
-    color: white;
-}
-
 .btn-outline-primary {
     color: var(--bs-primary);
     border-color: var(--bs-primary);
-}
-
-.btn-outline-primary:hover {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
-    color: white;
 }
 
 .table th {
@@ -80,7 +62,7 @@ body {
 
 /* Sidebar specific styling */
 .sidebar {
-    background-color: #1F2937; /* Dark slate for contrast */
+    background-color: #0f172a; /* Deep Midnight Navy */
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
@@ -90,10 +72,9 @@ body {
     color: #D1D5DB;
     font-weight: 500;
     padding: 0.75rem 1.5rem;
-    transition: all 0.2s;
 }
 
-.sidebar .nav-link:hover, .sidebar .nav-link.active {
+.sidebar .nav-link.active {
     background-color: #374151;
     color: var(--bs-primary);
     border-left: 4px solid var(--bs-primary);
@@ -110,10 +91,6 @@ body {
     border-bottom: 1px solid #374151;
 }
 
-.sidebar-brand:hover {
-    color: var(--bs-primary);
-}
-
 /* Book Image styling for cards */
 .book-img-top {
     height: 250px;
@@ -125,6 +102,9 @@ body {
 }
 
 /* Input specific */
+.form-control {
+    border: 1px solid #9ca3af;
+}
 .form-control:focus {
     border-color: var(--bs-primary);
     box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
